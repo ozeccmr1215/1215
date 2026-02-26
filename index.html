@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>OZECCMR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <h1 class="logo">
+  OZECCMR
+  <span class="visitor">
+    VISITOR <span id="visitor-count">000000</span>
+  </span>
+</h1>
+
+    <nav class="nav">
+      <a href="#about">ABOUT</a>
+      <a href="#illust">ILLUST</a>
+      <a href="#movie">MOVIE</a>
+    </nav>
+
+    <div class="social">
+      <a href="https://www.twitch.tv/ozeccmr" class="social-link" aria-label="Twitch" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-twitch.svg" alt="">
+      </a>
+      <a href="https://x.com/ozeccmr" class="social-link" aria-label="X" target="_blank" rel="noopener noreferrer">
+        <img src="images/icon-x.svg" alt="">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ABOUT（常に最上部） -->
+<section class="about" id="about">
+  <h2 class="section-title">
+    <span class="accent">■</span> ABOUT
+  </h2>
+  <p>
+    イラスト・動画制作。<br>
+    モノクロを基調にしたゴシックな世界観で活動しています。
+  </p>
+</section>
+
+<!-- ILLUST -->
+<section class="main" id="illust">
+  <h2 class="post-title">
+    <span class="accent">■</span> Illustration
+  </h2>
+
+  <!-- メイン表示 -->
+  <div class="main-illust">
+    <img id="main-image" src="images/illust_01.jpg" alt="">
+  </div>
+
+  <!-- サムネイル -->
+  <div class="thumbnail-list">
+    <img src="images/illust_01.png" class="thumb active" alt="">
+    <img src="images/illust_02.png" class="thumb" alt="">
+    <img src="images/illust_03.png" class="thumb" alt="">
+  </div>
+</section>
+
+<!-- MOVIE -->
+<section class="main" id="movie">
+  <h2 class="post-title">
+    <span class="accent">■</span> Movie
+  </h2>
+  <div class="video">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  © YOUR NAME
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  /* サムネ切替 */
+  const thumbs = document.querySelectorAll('.thumb');
+  const mainImage = document.getElementById('main-image');
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      mainImage.src = thumb.src;
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+
+  /* Lightbox */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  mainImage.addEventListener('click', () => {
+    lightboxImg.src = mainImage.src;
+    lightbox.classList.add('active');
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
+<script>
+  const key = 'visitorCount';
+  let count = localStorage.getItem(key);
+
+  if (!count) {
+    count = 1;
+  } else {
+    count = Number(count) + 1;
+  }
+
+  localStorage.setItem(key, count);
+
+  document.getElementById('visitor-count').textContent =
+    String(count).padStart(6, '0');
+</script>
+
+
+</body>
+</html>
