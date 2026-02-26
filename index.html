@@ -44,8 +44,17 @@
     <span class="accent">■</span> ABOUT
   </h2>
   <p>
-    イラスト・動画制作。<br>
-    モノクロを基調にしたゴシックな世界観で活動しています。
+    可愛いものとキレイなものと恐竜と犬が好きなデミエルフの活動者です。 <br>
+    お絵描きモノづくりするのも見るのも好き。<br>
+    skeb依頼受付中。<br>
+    詳細お絵描き依頼は準備中。<br>
+<br>
+© OZECCMR<br>
+本サイトに存在するすべての創作物は、制作者に帰属する著作物です。<br>
+無断転載・使用・改変・再配布・AI学習利用を一切禁じます。<br>
+<br>
+All creations presented herein remain the intellectual property of the creator.<br>
+Any unauthorized reproduction, use, alteration, redistribution, or AI training application is forbidden.<br>
   </p>
 </section>
 
@@ -57,7 +66,7 @@
 
   <!-- メイン表示 -->
   <div class="main-illust">
-    <img id="main-image" src="images/illust_01.jpg" alt="">
+    <img id="main-image" src="images/illust_01.png" alt="">
   </div>
 
   <!-- サムネイル -->
@@ -65,7 +74,42 @@
     <img src="images/illust_01.png" class="thumb active" alt="">
     <img src="images/illust_02.png" class="thumb" alt="">
     <img src="images/illust_03.png" class="thumb" alt="">
+    <img src="images/illust_04.png" class="thumb" alt="">
+    <img src="images/illust_05.png" class="thumb" alt="">
+    <img src="images/illust_06.png" class="thumb" alt="">
+    <img src="images/illust_07.png" class="thumb" alt="">
+    <img src="images/illust_08.png" class="thumb" alt="">
+    <img src="images/illust_09.png" class="thumb" alt="">
+    <img src="images/illust_10.png" class="thumb" alt="">
+    <img src="images/illust_11.png" class="thumb" alt="">
+    <img src="images/illust_12.png" class="thumb" alt="">
+    <img src="images/illust_13.png" class="thumb" alt="">
+    <img src="images/illust_14.png" class="thumb" alt="">
+    <img src="images/illust_15.png" class="thumb" alt="">
+    <img src="images/illust_16.png" class="thumb" alt="">
+    <img src="images/illust_17.png" class="thumb" alt="">
+    <img src="images/illust_18.png" class="thumb" alt="">
+    <img src="images/illust_19.png" class="thumb" alt="">
+    <img src="images/illust_20.png" class="thumb" alt="">
+    <img src="images/illust_21.png" class="thumb" alt="">
+    <img src="images/illust_22.png" class="thumb" alt="">
+    <img src="images/illust_23.png" class="thumb" alt="">
+    <img src="images/illust_24.png" class="thumb" alt="">
+    <img src="images/illust_25.png" class="thumb" alt="">
+    <img src="images/illust_26.png" class="thumb" alt="">
+    <img src="images/illust_27.png" class="thumb" alt="">
+    <img src="images/illust_28.png" class="thumb" alt="">
+    <img src="images/illust_29.png" class="thumb" alt="">
+    <img src="images/illust_30.png" class="thumb" alt="">
+    <img src="images/illust_31.png" class="thumb" alt="">
+    <img src="images/illust_32.png" class="thumb" alt="">
+    <img src="images/illust_33.png" class="thumb" alt="">
+    <img src="images/illust_34.png" class="thumb" alt="">
+    <img src="images/illust_35.png" class="thumb" alt="">
+    <img src="images/illust_36.png" class="thumb" alt="">
+
   </div>
+<a href="#" class="to-top" aria-label="ページ最上部へ戻る">▲</a>
 </section>
 
 <!-- MOVIE -->
@@ -76,12 +120,14 @@
   <div class="video">
     <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
   </div>
+<br><br><br>
+<a href="#" class="to-top" aria-label="ページ最上部へ戻る">▲</a>
 </section>
 
 </main>
 
 <footer class="footer">
-  © YOUR NAME
+  © OZECCMR
 </footer>
 
 <!-- Lightbox -->
@@ -90,13 +136,30 @@
 </div>
 
 <script>
-  /* サムネ切替 */
+
+  /* サムネ切替（トグル式） */
   const thumbs = document.querySelectorAll('.thumb');
   const mainImage = document.getElementById('main-image');
+  const mainContainer = document.querySelector('.main-illust');
+
+  let currentSrc = mainImage.src; // 現在表示中の画像
 
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
+
+      // 同じ画像をもう一度クリックした場合 → 閉じる
+      if (currentSrc === thumb.src) {
+        mainContainer.style.display = "none";
+        thumbs.forEach(t => t.classList.remove('active'));
+        currentSrc = null;
+        return;
+      }
+
+      // 別の画像をクリックした場合 → 表示する
+      mainContainer.style.display = "block";
       mainImage.src = thumb.src;
+      currentSrc = thumb.src;
+
       thumbs.forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
     });
@@ -121,6 +184,7 @@
     }
   });
 </script>
+
 <script>
   const key = 'visitorCount';
   let count = localStorage.getItem(key);
@@ -137,6 +201,17 @@
     String(count).padStart(6, '0');
 </script>
 
+<script>
+  document.querySelectorAll('.to-top').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
