@@ -213,8 +213,10 @@ body {
   transform: translateY(-2px);
 }
 
-/* セクション基準で配置するため */
-.about,
-.main {
-  position: relative;
+.section-icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated; /* ドット絵必須 */
+  margin-right: 6px;
+  vertical-align: middle;
 }
